@@ -7,6 +7,21 @@ export default createStore({
   },
 
   getters: {
+    cartItems: (state) => {
+      return state.cart
+        .map((item) => {
+          const course = coursesRecommended.find((c) => c.id === item.id)
+
+          if (!course) return null
+
+          return {
+            ...course,
+            quantity: item.quantity,
+          }
+        })
+        .filter(Boolean)
+    },
+
     totalItems: (state) => {
       return state.cart.reduce((total, item) => total + item.quantity, 0)
     },
