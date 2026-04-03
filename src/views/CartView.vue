@@ -1,24 +1,10 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
-import { coursesRecommended } from '@/data/Course/RecommendedCourse'
 
 const store = useStore()
 
-const cartItems = computed(() => {
-  return store.state.cart
-    .map((item) => {
-      const course = coursesRecommended.find((c) => c.id === item.id)
-
-      if (!course) return null
-
-      return {
-        ...course,
-        quantity: item.quantity,
-      }
-    })
-    .filter(Boolean)
-})
+const cartItems = computed(() => store.getters.cartItems)
 
 const isEmpty = computed(() => cartItems.value.length === 0)
 

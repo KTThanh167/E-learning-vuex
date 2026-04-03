@@ -11,8 +11,8 @@ export const coursesRecommended = [
     desc: 'Lorem ipsum dolor sit amet, consectetur adipising elit, sed do eiusmod tempor',
     userAvt: UserAvt,
     userName: 'Lina',
-    oldPrice: '$100',
-    newPrice: '$80',
+    oldPrice: '$140',
+    newPrice: '$100',
     quantity: 1,
   },
   {
@@ -23,8 +23,8 @@ export const coursesRecommended = [
     desc: 'Lorem ipsum dolor sit amet, consectetur adipising elit, sed do eiusmod tempor',
     userAvt: UserAvt,
     userName: 'Lina',
-    oldPrice: '$100',
-    newPrice: '$80',
+    oldPrice: '$200',
+    newPrice: '$150',
     quantity: 1,
   },
   {
@@ -47,8 +47,8 @@ export const coursesRecommended = [
     desc: 'Lorem ipsum dolor sit amet, consectetur adipising elit, sed do eiusmod tempor',
     userAvt: UserAvt,
     userName: 'Lina',
-    oldPrice: '$100',
-    newPrice: '$80',
+    oldPrice: '$150',
+    newPrice: '$90',
     quantity: 1,
   },
 ]
