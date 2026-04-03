@@ -1,12 +1,15 @@
 import { createStore } from 'vuex'
+import { coursesRecommended } from '@/data/Course/RecommendedCourse'
 
 export default createStore({
   state: {
-    cart: JSON.parse(localStorage.getItem('cart')) || [],
+    cart: JSON.parse(localStorage.getItem('cartVueX')) || [],
   },
 
   getters: {
-    totalItems: (state) => state.cart.length,
+    totalItems: (state) => {
+      return state.cart.reduce((total, item) => total + item.quantity, 0)
+    },
 
     isInCart: (state) => (id) => {
       return state.cart.some((item) => item.id === id)
@@ -14,7 +17,10 @@ export default createStore({
 
     totalPrice: (state) => {
       return state.cart.reduce((total, item) => {
-        const price = Number(item.newPrice?.replace('$', '') || 0)
+        const course = coursesRecommended.find((c) => c.id === item.id)
+        if (!course) return total
+
+        const price = Number(course.newPrice.replace('$', ''))
         return total + price * item.quantity
       }, 0)
     },
@@ -43,7 +49,7 @@ export default createStore({
     },
 
     SAVE_TO_LOCAL_STORAGE(state) {
-      localStorage.setItem('cart', JSON.stringify(state.cart))
+      localStorage.setItem('cartVueX', JSON.stringify(state.cart))
     },
   },
 
